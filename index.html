@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Multiplication Table Generator</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin:150px;
+            }
+            #multiplicationForm{
+                position: relative;
+                height: 600px;
+                width: 410px;
+                background-color: aqua; 
+            }
+            #multiplier{
+                position: relative;
+                margin: 22px;
+            }
+            button{
+                position: relative;
+                left: 175px;
+                bottom: 20px;
+            }
+            table {
+                margin-top: 20px;
+                position: relative;
+                /* border-collapse: collapse; */
+                left: 120px;  
+                background-color:pink;
+            }
+            h2{
+                position: relative;
+                margin: 30px;
+                padding-top: 30px;
+            }
+            table, th, td {
+                border: 1px solid black;
+                
+            }
+            th, td {
+                padding: 6px 10px;
+                text-align: center;
+            }
+            #result{
+                color: red;
+                
+            } 
+        </style>
+    </head>
+    <body>
+        <!-- <h1>Multiplication Table Generator</h1> -->
+        <form id="multiplicationForm">
+        <h2>Multiplication Table Generator</h2>
+
+        
+            <!-- <label for="multiplier">Number for multiplication:</label> -->
+            <input type="text" id="multiplier"placeholder="number of multiplication" required>
+            
+            <!-- <label for="startNumber">Starting number:</label> -->
+            <input type="text" id="startNumber"placeholder="Startingnumber" required>
+            <br><br>
+            <button type="button" onclick="generateTable()">click me</button>
+            <div id="result"></div>
+            
+        </form>
+        <!-- <div id="result"></div>  -->
+    
+        <script>
+            function generateTable() {
+            // Get the input values
+            const multiplier = parseInt(document.getElementById('multiplier').value);
+            const startNumber = parseInt(document.getElementById('startNumber').value);
+
+            // Validate inputs
+            if (isNaN(multiplier) || isNaN(startNumber)) {
+                result.innerHTML='Please enter valid numbers & no spaces allowed';
+                return;
+            }
+
+            // Generate the multiplication table
+            let resultHtml = '<table><tr><th>Multiplier</th><th>result</th></tr>';
+            for (let i = 0; i < 10; i++) {
+                const currentNumber = startNumber + i;
+                const result = multiplier * currentNumber;
+                resultHtml += `<tr><td>${multiplier} x ${currentNumber}</td><td>${result}</td></tr>`;
+            }
+            resultHtml += '</table>';
+
+            // Display the result
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+
+        </script>
+    </body>
+    </html>
+    
+
